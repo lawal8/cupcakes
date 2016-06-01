@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+    <head>
+         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByF5gf8EgH8LG35fy8TJACsfOW9Zd88ZY"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <title>Weather</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/jquery-ui.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.1.3/material.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <link rel="stylesheet" href="css/weatherapp.css" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <link rel="shortcut icon" sizes="196x196" href="images/icon.png" />
+        <link rel="apple-touch-icon-precomposed" href="images/icon.png" />
+    </head>
+    
+    <body>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+          <header class="mdl-layout__header">
+              <button onclick="location.href = 'index.html';" class="mdl-layout-icon mdl-button mdl-js-button mdl-button--icon"> 
+                <i class="material-icons">arrow_back</i>
+              </button>
+            <div class="mdl-layout__header-row">
+              <span class="mdl-layout-title" id="headerBarTitle">Current Location</span>
+            </div>
+          </header>
+
+          <main class="mdl-layout__content">
+            <div class="content-grid mdl-grid">
+              <div class="mdl-cell">
+                <!--   Main page content here:   -->  
+                <div id="googleMap" style="width:328px;height:215px;"></div>
+                <body onload="init()"></body>
+                      <p>
+  
+  <input type="text" id="dateLabel" style="border: 0; color: #ff9900; font-weight: bold;" size="150"/>
+  <textarea class= textBox id="weatherText" rows = "3" cols="42" style="border: 0; color: #3F47B0;" size="100"></textarea>
+</p>
+ 
+<div id="slider-range"  class= center ></div>
+                  
+               
+
+                  
+                <article style="padding:50px 20px">
+                    
+                    <div id="out"></div>
+                </article>
+                
+               
+              </div>
+            </div>
+          </main>    
+        </div>
+        <!--   JavaScript files:   -->
+        <script src="js/locationWeatherCache.js"></script>
+        
+        <script src="js/viewCurrentLocation.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script src="js/jquery.ui.touch-punch.min.js"></script>
+<script>
+    var date = new Date(); //created a date for the slider to use
+    sliderDate = date.simpleDateString() + "T12:00:00"
+    weatherForecastSlider(sliderDate)
+    var msecSince1970 = date.getTime() - 86400000*30 ; //86400000 msecs in a day. therefore that *30 equals 30 days, subtract that from date and you will get 30 days prior.
+    date.setTime(msecSince1970);
+    var pastDate = new Date(); //this creates the minimum date for the slider, which is 30 days in the past.
+    $(function() {
+        $( "#slider-range" ).slider({ //assigns the slider to slider-range in the html.
+            range: false,
+            min: new Date(date).getTime() / 1000, //the current date
+            max: new Date(pastDate).getTime() / 1000, //the 30 days past date. The slider will now operate between these 2 dates.
+            step: 86400,
+            values: [ new Date(pastDate).getTime() / 1000 ],
+            slide: function( event, ui ) { //slide funciton to update the date label when the slider moves.
+                $( "#dateLabel" ).val( (new Date(ui.values[ 0 ] *1000).toDateString() ) );
+                sliderDate = new Date(ui.values[ 0 ] *1000).simpleDateString() + "T12:00:00"; //assign the selected slider value to sliderDate.
+            },
+            stop: function( event, ui ) { //stop function to update the weather once the slider has stopped.
+                weatherForecastSlider(sliderDate)
+            }
+        
+        }).draggable();; //allows the slider to be dragged on touch devices.
+   
+        $( "#dateLabel" ).val( (new Date($( "#slider-range" ).slider( "values", 0 )*1000).toDateString())); //dateLabels value set to the value of the slider.
+    });
+</script> 
+        
+    </body>
+</html>

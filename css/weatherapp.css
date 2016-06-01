@@ -1,0 +1,148 @@
+html, body { 
+    height: 100%; 
+    margin: 0; 
+    padding: 0; 
+}
+.button {
+    font-weight: 400;
+    letter-spacing: .04em;  
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 36px;
+    margin-right: 36px;
+    padding: 5px 10px;
+    display: inline;
+    background: #3F47B0;
+    border: solid;
+    color: #fff;
+    cursor: pointer;
+    width: 80%;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    text-shadow: 1px 1px #666;
+    
+    }
+.button2 {
+    font-weight: 400;
+    letter-spacing: .04em;  
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 36px;
+    margin-right: 36px;
+    padding: 5px 10px;
+     margin-top: 35px;
+    border-top: 0px
+    display: inline;
+    background: #3F47B0;
+    border: solid;
+    color: #fff;
+    cursor: pointer;
+    width: 80%;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    text-shadow: 1px 1px #666;
+    
+    }
+<input type="text"class="inputs" placeholder="Location" /> 
+ <input type="password" class="inputs"placeholder="Nickname" /> 
+             
+           
+/*webkit is used for chrome to use newer features off css, in this case it allows for the placeholder to be used */
+inputs:-webkit-input-placeholder {
+    color: #b5b5b5;
+}
+
+
+.inputs {   
+    background: #f5f5f5;
+    font-size: 1.2rem;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    margin-bottom: 10px;
+    box-shadow: inset 0 2px 3px rgba( 0, 0, 0, 0.1 );
+    clear: both;
+}
+/*This code is for when the text boxes are selected.*/
+.inputs:focus {
+    background: #fff;
+    box-shadow: 0 0 0 3px #3399FF, inset 0 2px 3px rgba( 0, 0, 0, 0.2 ), 0px 5px 5px rgba( 0, 0, 0, 0.15 );
+    outline: none;
+}
+.imageContainer {
+    text-align: center;
+}
+.imageContainer img {
+    display: block;
+}
+.imageContainer div {
+    position: relative;
+    display: inline-block;
+    /* if you need ie6/7 support */
+    *display: inline;
+    zoom: 1;
+}
+.imageContainer span {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #000;
+    background: rgba(0,0,0,.5);
+}
+
+.textBox {
+  font-family: sans-serif; 
+    color: black
+
+}
+textarea::first-line{
+       font-size: 100%;
+    font-weight: bold;
+    color: black
+    
+}
+textarea{
+       font-size: 200%;
+    background-image: url('pepe.png');
+    color: red
+    
+}
+.center {
+    margin: auto;
+    width: 90%;   
+}
+
+.formatFix {
+    color : white;
+}
+.route {
+color: blue;
+background: transparent;
+    text-align: center;
+vertical-align: middle;
+     font-size: 500%;
+    width: 152.5px;
+    height: 40px;
+       
+    font-size: 1.2rem;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    margin-bottom: 10px;
+    box-shadow: inset 0 2px 3px rgba( 0, 0, 0, 0.1 );
+    clear: both;
+      margin-left: auto ;
+  margin-right: auto ;
+}
+#currentLocation { 
+    background-color: lightblue;
+}
+#test {
+    background-image: url('hitomi.png');
+}
+</style> 
